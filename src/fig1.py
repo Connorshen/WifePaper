@@ -9,8 +9,9 @@ class Fig1(BaseFig):
         blue_df = df.loc[:,
                   ["LF_LH_7_2363", "LXY_LH_7_2363", "CF_LH_7_516", "DJL_LH_7_2363", "DKQ_LH_7_2363", "WHX_LH_7_2363",
                    "WJ_LH_7_2363", "WTT_LH_7_2363", "ZWT_LH_7_2363"]]
-        yellow_df = df.loc[:,
-                    ["HRY_LH_7_2363", "WY_LH_7_2363", "XLM_LH_7_2363", "ZLY_LH_7_2363", "ZNN_LH_7_2363"]]
+        # yellow_df = df.loc[:,
+        #             ["HRY_LH_7_2363", "WY_LH_7_2363", "XLM_LH_7_2363", "ZLY_LH_7_2363", "ZNN_LH_7_2363"]]
+        yellow_df = df.iloc[:, -5:]
         for ind in blue_df.index:
             blue_row = blue_df.loc[ind][:]
             yellow_row = yellow_df.loc[ind][:]
