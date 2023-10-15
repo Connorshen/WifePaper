@@ -5,17 +5,22 @@ import matplotlib.pyplot as plt
 
 class Fig2(BaseFig):
     def paint(self):
-        df = pd.read_excel("../data/NvP DEG-Significant.xls", sheet_name="miRNA_diff_significant")
+        df = pd.read_excel("../data/NvP DEG-Significant.xls", sheet_name="miRNA_diff_significant", index_col=0)
         # 柱状图宽度
         col_width = 0.4
         n_mean_cpm = df.loc[:, "N_mean_CPM"]
         p_mean_cpm = df.loc[:, "P_mean_CPM"]
-        plt.bar([i - col_width / 2 + 1 for i in range(len(n_mean_cpm))], n_mean_cpm, width=col_width,
-                label="N_mean_CPM")
-        plt.bar([i + col_width / 2 + 1 for i in range(len(p_mean_cpm))], p_mean_cpm, width=col_width,
-                label="P_mean_CPM")
-        plt.yscale('log')
+        plt.figure(figsize=(10, 6))  # 宽度为8英寸，高度为6英寸
+        plt.bar(x=[i - col_width / 2 + 1 for i in range(len(n_mean_cpm))], height=n_mean_cpm, width=col_width,
+                label="N", color="#33ffcc")
+        plt.bar(x=[i + col_width / 2 + 1 for i in range(len(p_mean_cpm))], height=p_mean_cpm, width=col_width,
+                label="P", color="#9999cc")
+        plt.yscale('symlog')
+        plt.ylabel('mean cpm')
+        plt.xticks([i + 1 for i in range(len(n_mean_cpm))], df.index.values, rotation=35)
         plt.legend()
+        plt.tight_layout()
+        plt.savefig("../result/fig2.png")
         plt.show()
 
 
