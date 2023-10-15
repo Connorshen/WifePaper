@@ -1,6 +1,7 @@
 from src.base_fig import BaseFig
 import pandas as pd
 import matplotlib.pyplot as plt
+from os import path
 
 
 class Fig2(BaseFig):
@@ -20,7 +21,7 @@ class Fig2(BaseFig):
         plt.xticks([i + 1 for i in range(len(n_mean_cpm))], df.index.values, rotation=35)
         plt.legend()
         plt.tight_layout()
-        plt.savefig(f"../result/{self.__class__.__name__}.png")
+        plt.savefig(path.join(self.OUTPUT_DIR, f"{self.__class__.__name__}.png"))
 
 
 fig = Fig2()
