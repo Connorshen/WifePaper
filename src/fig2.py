@@ -20,8 +20,7 @@ class Fig2(BaseFig):
         plt.xticks([i + 1 for i in range(len(n_mean_cpm))], df.index.values, rotation=35)
         plt.legend()
         plt.tight_layout()
-        plt.savefig("../result/fig2.png")
-        plt.show()
+        plt.savefig(f"../result/{self.__class__.__name__}.png")
 
 
 fig = Fig2()
